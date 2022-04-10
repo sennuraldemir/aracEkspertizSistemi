@@ -11,6 +11,17 @@ public class personel {
     private int yas;
     private String meslegi;
     
+     public odeme() {
+    }
+
+    public odeme(int odeme_id, String sase_no, String havale, String nakit, String kredi_karti) {
+        this.odeme_id = odeme_id;
+        this.sase_no = sase_no;
+        this.havale = havale;
+        this.nakit = nakit;
+        this.kredi_karti = kredi_karti;
+    }
+    
     public int getPersonel_id(){
         return personel_id;
     }
