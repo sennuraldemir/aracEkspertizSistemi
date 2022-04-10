@@ -16,6 +16,16 @@ public class randevu {
     private String saat;
     private String ad;
     private String soyad;
+
+    public randevu(String randevu_id, String plaka_id, String tarih, String saat, String ad, String soyad) {
+        this.randevu_id = randevu_id;
+        this.plaka_id = plaka_id;
+        this.tarih = tarih;
+        this.saat = saat;
+        this.ad = ad;
+        this.soyad = soyad;
+    }
+    
     
      public randevu() {
     }
