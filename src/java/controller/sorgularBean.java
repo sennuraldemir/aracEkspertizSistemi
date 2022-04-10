@@ -4,52 +4,77 @@
  */
 package controller;
 
-import jakarta.enterprise.context.SessionScoped;
+import dao.sorgularDAO;
+import entity.sorgular;
 import jakarta.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-
+import java.util.List;
 
 /**
  *
- * @author Sennur
+ * @author Mustafa
  */
-@Named(value = "sorgularController")
+@Named(value = "sorgularBean")
 @SessionScoped
-public class sorgularBean implements Serializable{
-    
-     private String sasino_id;
-     private String plaka_id;
-     private String bilgi;
+public class sorgularBean implements Serializable {
+
+    private sorgular entity;
+    private sorgularDAO dao;
+    private List<sorgular> list;
+
     /**
-     * Creates a new instance of sorgularController
+     * Creates a new instance of odemeBean
      */
     public sorgularBean() {
-    
-    
     }
 
-    public String getSasino_id() {
-        return sasino_id;
+    public void create(){
+        this.getDao().create(entity);
+        entity=new sorgular();
     }
-
-    public void setSasino_id(String sasino_id) {
-        this.sasino_id = sasino_id;
+    public void update(){
+        this.getDao().update(entity);
+        entity=new sorgular();
     }
-
-    public String getPlaka_id() {
-        return plaka_id;
-    }
-
-    public void setPlaka_id(String plaka_id) {
-        this.plaka_id = plaka_id;
-    }
-
-    public String getBilgi() {
-        return bilgi;
-    }
-
-    public void setBilgi(String bilgi) {
-        this.bilgi = bilgi;
+    public void delete(sorgular a){
+        this.getDao().delete(a);
+        entity=new sorgular();
     }
     
+    public void clear(){
+        entity=new sorgular();
+    }
+    
+    public sorgular getEntity() {
+        if (entity == null) {
+            entity = new sorgular();
+        }
+        return entity;
+    }
+
+    public void setEntity(sorgular entity) {
+        this.entity = entity;
+    }
+
+    public sorgularDAO getDao() {
+        if (dao == null) {
+            dao = new sorgularDAO();
+        }
+        return dao;
+    }
+
+    public void setDao(sorgularDAO dao) {
+        this.dao = dao;
+    }
+
+    public List<sorgular> getList() {
+        this.list = this.getDao().getList();
+        return list;
+    }
+
+    public void setList(List<sorgular> list) {
+        this.list = list;
+    }
+
 }
