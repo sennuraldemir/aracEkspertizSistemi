@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Acikraporlar</title>
+        <title>AcikRaporlar</title>
     </head>
     <body>
           <h:form>
@@ -12,8 +12,8 @@
         <hr/>
         <h:form>
             motor_no : <h:inputText value="#{AcikRaporlar.entity.motor_no}"/>
-            <h:commandButton rendered="#{AracBean.entity.saseno_id==0}" action="#{AracBean.create()}" value="create"/>
-            <h:commandButton rendered="#{AracBean.entity.saseno_id!=0}" action="#{AracBean.update()}" value="Update"/>
+            <h:commandButton rendered="#{AcikRaporlarBean.entity.saseno_id==0}" action="#{AcikRaporlarBean.create()}" value="create"/>
+            <h:commandButton rendered="#{AcikRaporlarBean.entity.saseno_id!=0}" action="#{AcikRaporlarBean.update()}" value="Update"/>
 
         </h:form>
         <hr/>
@@ -23,7 +23,7 @@
                 <f:facet name="header">saseno_id</f:facet>  
                     #{entity.saseno_id}
             </h:column>
-            <h:dataTable value="#{AracBean.list}" var="entity">
+            <h:dataTable value="#{AcikRaporlarBean.list}" var="entity">
                 <h:column>
                     <f:facet name="header">saseno_id</f:facet>  
                         #{entity.saseno_id}
@@ -45,8 +45,8 @@
                         #{entity.rengi}
                 </h:column>
                 <h:column>
-                    <h:commandButton  action="#{AracBean.delete(entity)}" value="delete"/>
-                    <h:commandButton action="#{AracBean.setEntity(entity)}" value="update"/>
+                    <h:commandButton  action="#{AcikRaporlarBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{AcikRaporlarBean.setEntity(entity)}" value="update"/>
                 </h:column> 
             </h:dataTable>
         </h:form>
