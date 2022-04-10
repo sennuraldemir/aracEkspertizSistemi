@@ -5,10 +5,51 @@
         <title>Acikraporlar</title>
     </head>
     <body>
-        <h:form>
-            <h:commandButton action="/index" value="/home"
+          <h:form>
+            <h:commandButton action="/index" value="/home"/>
         </h:form>
-            Acikraporlar List    
+
+        <hr/>
+        <h:form>
+            motor_no : <h:inputText value="#{AcikRaporlar.entity.motor_no}"/>
+            <h:commandButton rendered="#{AracBean.entity.saseno_id==0}" action="#{AracBean.create()}" value="create"/>
+            <h:commandButton rendered="#{AracBean.entity.saseno_id!=0}" action="#{AracBean.update()}" value="Update"/>
+
+        </h:form>
+        <hr/>
+
+        <h:form>
+            <h:column>
+                <f:facet name="header">saseno_id</f:facet>  
+                    #{entity.saseno_id}
+            </h:column>
+            <h:dataTable value="#{AracBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">saseno_id</f:facet>  
+                        #{entity.saseno_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">motor_no</f:facet>  
+                        #{entity.motor_no}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">arac_cinsi</f:facet>  
+                        #{entity.arac_cinsi}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_yili</f:facet>  
+                        #{entity.model_yili}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">rengi</f:facet>  
+                        #{entity.rengi}
+                </h:column>
+                <h:column>
+                    <h:commandButton  action="#{AracBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{AracBean.setEntity(entity)}" value="update"/>
+                </h:column> 
+            </h:dataTable>
+        </h:form>
     </body>
 </html>
 
