@@ -3,7 +3,7 @@ package dao;
 
 import entity.personel;
 import java.sql.Connection;
-import java.sql.ResulSet;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class personelDAO extends DBConnection{
         try{
             Statement st = this.connect().createStatement();
             
-            String query = "insert into personel(adi, soyadi, yas, meslegi) values('"+c.getAdi() + "','"+c.getSoyadi() + "','"+c.getYas() + "','"+c.getMeslegi()+"');
+            String query = "insert into personel(adi, soyadi,yas,meslegi) values ('" + c.getAdi() + "','" + c.getSoyadi() + "','" + c.getYas() + "','" + c.getMeslegi() + "')";
             st.executeUpdate(query);
         
         } catch (Exception ex){
@@ -32,7 +32,7 @@ public class personelDAO extends DBConnection{
         try{
             Statement st = this.connect().createStatement();
             
-            String query = "update personel set adi='"+c.getAdi()+"', soyadi='"+c.getSoyadi()+"', yas='"+c.getYas()+"', meslegi='"+c.getMeslegi()"'where id="+c.getPersonel_id();
+            String query = "update personel set adi='"+c.getAdi()+"', soyadi='"+c.getSoyadi()+"', yas='"+c.getYas()+"', meslegi='"+c.getMeslegi()+"'where id="+c.getPersonel_id();
             st.executeUpdate(query);
         
         } catch (Exception ex){
