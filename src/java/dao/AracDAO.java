@@ -19,7 +19,7 @@ public class AracDAO extends DBConnection{
     public void create(Arac a){
          try { 
              Statement st = this.connect().createStatement();
-             String query = "insert into Arac (sasino_id,motor_no,arac_cinsi,model_yili,rengi) values ('"+a.getSasino_id()+"','"+a.getMotor_no()+"','"+a.getArac_cinsi()+"','"+a.getModel_yili()+"','"+a.getRengi()+"')";
+             String query = "insert into Arac (saseno_id,motor_no,arac_cinsi,model_yili,rengi) values ('"+a.getSaseno_id()+"','"+a.getMotor_no()+"','"+a.getArac_cinsi()+"','"+a.getModel_yili()+"','"+a.getRengi()+"')";
              
              st.executeUpdate(query);
              
@@ -31,7 +31,7 @@ public class AracDAO extends DBConnection{
     public void update(Arac a){
        try { 
              Statement st= this.connect().createStatement();
-             String query = "update Arac set sasino_id= '"+a.getSasino_id()+"' where id='"+a.getMotor_no()+"'";
+             String query = "update Arac set motor_no= '"+a.getMotor_no()+"' , arac_cinsi='"+a.getArac_cinsi()+"', model_yili= "+a.getModel_yili()+", rengi='"+a.getRengi()+"' where saseno_id='"+a.getSaseno_id()+"'";
              st.executeUpdate(query);
              
         }catch (Exception e ){
@@ -41,7 +41,7 @@ public class AracDAO extends DBConnection{
     public void delete(Arac a){
          try { 
              Statement st= this.connect().createStatement();
-             String query = "delete from Arac where id  "+a.getSasino_id() +a.getMotor_no() +a.getArac_cinsi() +a.getModel_yili() +a.getRengi();
+             String query = "delete from Arac where saseno_id=  '"+a.getSaseno_id()+"'";
              
              st.executeUpdate(query);
              
@@ -50,7 +50,7 @@ public class AracDAO extends DBConnection{
         }
         
     }
-    public List<Arac> getList(Arac a){
+    public List<Arac> getList(){
         List<Arac> list = new ArrayList<>();
          try { 
              Statement st= this.connect().createStatement();
@@ -59,7 +59,7 @@ public class AracDAO extends DBConnection{
              ResultSet rs = st.executeQuery(query);
              
              while (rs.next()) {
-                list.add(new Arac(rs.getString("saseno_id"), rs.getString("model_yili"))) ;
+                list.add(new Arac(rs.getString("saseno_id"), rs.getString("motor_no") , rs.getString("arac_cinsi"),rs.getInt("model_yili"),rs.getString("rengi"))) ;
              }
              
         }catch (Exception e ){
@@ -69,5 +69,7 @@ public class AracDAO extends DBConnection{
          return list;
         
     }
+
+   
 }
     

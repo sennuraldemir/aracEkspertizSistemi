@@ -9,14 +9,14 @@ package entity;
  * @author Sennur
  */
 public class Arac {
-    private String sasino_id;
+    private String saseno_id;
     private String motor_no;
     private String arac_cinsi;
     private int model_yili;
     private String rengi;
 
-    public Arac(String sasino_id, String motor_no, String arac_cinsi, int model_yili, String rengi) {
-        this.sasino_id = sasino_id;
+    public Arac(String saseno_id, String motor_no, String arac_cinsi, int model_yili, String rengi) {
+        this.saseno_id = saseno_id;
         this.motor_no = motor_no;
         this.arac_cinsi = arac_cinsi;
         this.model_yili = model_yili;
@@ -25,19 +25,14 @@ public class Arac {
 
     public Arac() {
     }
-
-    public Arac(String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     
     
-    public String getSasino_id() {
-        return sasino_id;
+    public String getSaseno_id() {
+        return saseno_id;
     }
 
-    public void setSasino_id(String sasino_id) {
-        this.sasino_id = sasino_id;
+    public void setSaseno_id(String saseno_id) {
+        this.saseno_id = saseno_id;
     }
 
     public String getMotor_no() {
@@ -72,12 +67,5 @@ public class Arac {
         this.rengi = rengi;
     }
 
-    public String getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public String getTitle() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
 }

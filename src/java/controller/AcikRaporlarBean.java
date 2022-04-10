@@ -37,8 +37,8 @@ public class AcikRaporlarBean implements Serializable {
         this.getDao().update(entity);
         entity=new AcikRaporlar();
     }
-    public void delete(){
-        this.getDao().delete(entity);
+    public void delete(AcikRaporlar a){
+        this.getDao().delete(a);
         entity=new AcikRaporlar();
     }
     
