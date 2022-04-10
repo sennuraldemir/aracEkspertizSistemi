@@ -25,7 +25,7 @@ public class randevuDAO extends DBConnection{
             System.out.println(ex.getMessage());
         }
     }
-        
+         
 
     public void update(randevu c) {
         try {
