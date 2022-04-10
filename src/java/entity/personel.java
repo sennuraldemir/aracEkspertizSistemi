@@ -10,6 +10,17 @@ public class personel {
     private String soyadi;
     private int yas;
     private String meslegi;
+
+    public personel(int personel_id, String adi, String soyadi, int yas, String meslegi) {
+        this.personel_id = personel_id;
+        this.adi = adi;
+        this.soyadi = soyadi;
+        this.yas = yas;
+        this.meslegi = meslegi;
+    }
+
+    public personel() {
+    }
     
     public int getPersonel_id(){
         return personel_id;

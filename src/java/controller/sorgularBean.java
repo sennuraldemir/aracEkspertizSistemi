@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 @Named(value = "sorgularController")
 @SessionScoped
-public class sorgularController implements Serializable{
+public class sorgularBean implements Serializable{
     
      private String sasino_id;
      private String plaka_id;
@@ -23,7 +23,7 @@ public class sorgularController implements Serializable{
     /**
      * Creates a new instance of sorgularController
      */
-    public sorgularController() {
+    public sorgularBean() {
     
     
     }
