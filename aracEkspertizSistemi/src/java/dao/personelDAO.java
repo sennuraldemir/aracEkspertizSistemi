@@ -45,7 +45,7 @@ public class personelDAO extends DBConnection{
     public void delete (personel c) {
         try{
             Statement st= this.connect().createStatement();
-            String query= "delete from category where id" + c.getPersonel_id();
+            String query= "delete from personel where id" + c.getPersonel_id();
             st.executeUpdate(query);
             
         }catch (Exception ex) {
