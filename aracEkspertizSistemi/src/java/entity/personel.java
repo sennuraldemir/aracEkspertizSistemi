@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 
 public class personel {
@@ -11,15 +8,15 @@ public class personel {
     private int yas;
     private String meslegi;
     
-     public odeme() {
+     public personel() {
     }
 
-    public odeme(int odeme_id, String sase_no, String havale, String nakit, String kredi_karti) {
-        this.odeme_id = odeme_id;
-        this.sase_no = sase_no;
-        this.havale = havale;
-        this.nakit = nakit;
-        this.kredi_karti = kredi_karti;
+    public personel(int personel_id, String adi, String soyadi, int yas, String meslegi) {
+        this.personel_id = personel_id;
+        this.adi = adi;
+        this.soyadi = soyadi;
+        this.yas = yas;
+        this.meslegi = meslegi;
     }
     
     public int getPersonel_id(){
