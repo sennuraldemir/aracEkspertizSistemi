@@ -5,7 +5,9 @@
 package controller;
 
 import dao.odemeDAO;
+import dao.AracDAO;
 import entity.odeme;
+import entity.Arac;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -21,7 +23,9 @@ public class odemeBean implements Serializable {
 
     private odeme entity;
     private odemeDAO dao;
+    private AracDAO aracDao;
     private List<odeme> list;
+    private List<Arac> aracList;
 
     /**
      * Creates a new instance of odemeBean
@@ -37,8 +41,8 @@ public class odemeBean implements Serializable {
         this.getDao().update(entity);
         entity=new odeme();
     }
-    public void delete(){
-        this.getDao().delete(entity);
+    public void delete(odeme o){
+        this.getDao().delete(o);
         entity=new odeme();
     }
     
@@ -71,6 +75,26 @@ public class odemeBean implements Serializable {
 
     public void setList(List<odeme> list) {
         this.list = list;
+    }
+
+    public List<Arac> getAracList() {
+        this.aracList = this.getAracDao().getList();
+        return aracList;
+    }
+
+    public void setAracList(List<Arac> aracList) {
+        this.aracList = aracList;
+    }
+
+    public AracDAO getAracDao() {
+        if (aracDao == null) {
+            aracDao = new AracDAO();
+        }
+        return aracDao;
+    }
+
+    public void setAracDao(AracDAO aracDao) {
+        this.aracDao = aracDao;
     }
 
 }
