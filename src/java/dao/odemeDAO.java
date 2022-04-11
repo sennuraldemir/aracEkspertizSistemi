@@ -30,7 +30,7 @@ public class odemeDAO extends DBConnection{
     public void update(odeme c) {
         try {
             Statement st = this.connect().createStatement();
-            String query="update odeme set sase_no='"+c.getSase_no()+"'where id="+c.getOdeme_id();
+            String query="update odeme set sase_no='"+c.getSase_no()+ "', kredi_karti = '" + c.getKredi_karti() + "', nakit = '" + c.getNakit() + "', havale = '" + c.getHavale() +  "' where odeme_id= "+c.getOdeme_id();
             
             st.executeUpdate(query);
             
@@ -43,7 +43,7 @@ public class odemeDAO extends DBConnection{
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from category where id" + c.getOdeme_id();
+            String query = "delete from odeme where odeme_id = " + c.getOdeme_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {

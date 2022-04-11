@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <head>
+        <title>Odeme</title>
+    </head>
+    <body>
+          <h:form>
+            <h:commandButton action="/index" value="/home"/>
+        </h:form>
+
+        <hr/>
+        <h:form>
+            Arac:
+            <h:selectOneMenu value="#{odemeBean.entity.sase_no}">
+                    <f:selectItems value="#{odemeBean.aracList}" var="c" itemValue="#{c.saseno_id}" itemLabel="#{c.saseno_id}"/>
+            </h:selectOneMenu>
+            <br/>
+            
+            <!--burada sase_no yu değiştirdim çünkü bu bir fk fk olmayan nakit eklendi-->
+            Nakit : <h:inputText value="#{odemeBean.entity.nakit}"/> <br/>
+            Havale: <h:inputTextarea rows="5" cols="50" value="#{odemeBean.entity.havale}"/><br/>
+            <h:commandButton rendered="#{odemeBean.entity.odeme_id==0}" action="#{odemeBean.create()}" value="create"/><br/>
+            <h:commandButton rendered="#{odemeBean.entity.odeme_id!=0}" action="#{odemeBean.update()}" value="Update"/><br/>
+            <h:commandButton rendered="#{odemeBean.entity.odeme_id!=0}" action="#{odemeBean.clear()}" value="Clear Form"/><br/> 
+
+        </h:form>
+        <hr/>
+
+        <h:form>
+            <h:column>
+                <f:facet name="header">odeme_id</f:facet>  
+                    #{entity.odeme_id}
+            </h:column>
+            <h:dataTable value="#{odemeBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">odeme_id</f:facet>  
+                        #{entity.odeme_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">sase_no</f:facet>  
+                        #{entity.sase_no}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">kredi_karti</f:facet>  
+                        #{entity.kredi_karti}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">nakit</f:facet>  
+                        #{entity.nakit}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">havale</f:facet>  
+                        #{entity.havale}
+                </h:column>
+                <h:column>
+                    <h:commandButton  action="#{odemeBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{odemeBean.setEntity(entity)}" value="update"/>
+                </h:column> 
+            </h:dataTable>
+        </h:form>
+    </body>
+</html>
+
