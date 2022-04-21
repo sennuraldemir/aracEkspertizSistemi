@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author Mustafa
+ * @author Sennur
  */
 @Named(value = "AracBean")
 @SessionScoped
