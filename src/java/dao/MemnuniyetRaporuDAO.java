@@ -50,8 +50,8 @@ public class MemnuniyetRaporuDAO extends DBConnection {
 
     }
 
-    public List<odeme> getList() {
-        List<odeme> list = new ArrayList<>();
+    public List<MemnuniyetRaporu> getList() {
+        List<MemnuniyetRaporu> list = new ArrayList<>();
 
         try {
             Statement st = this.connect().createStatement();
