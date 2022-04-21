@@ -1,11 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>Facelet Title</title>
+        <title>memnuniyetRaporu</title>
     </head>
     <body>
-        Hello from Facelets
+        <h:form>
+            <h:commandButton action="/index" value="/home"/>
+        </h:form>
+
+        <hr/>
+        <h:form>
+            saseno_id: <h:inputText value="#{memnuniyetRaporuBean.entity.saseno_id}"/><br/>
+            motor_no : <h:inputText value="#{memnuniyetRaporuBean.entity.motor_no}"/><br/>
+            arac_cinsi : <h:inputText value="#{memnuniyetRaporuBean.entity.arac_cinsi}"/><br/>
+            model_yili : <h:inputText value="#{memnuniyetRaporuBean.entity.model_yili}"/><br/>
+            rengi:      <h:inputText value="#{memnuniyetRaporuBean.entity.rengi}"/><br/>
+            
+            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.saseno_id==null}" action="#{memnuniyetRaporuBean.create()}" value="create"/>
+            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.saseno_id!=null}" action="#{memnuniyetRaporuBean.update()}" value="Update"/>
+
+        </h:form>
+        <hr/>
+
+        <h:form>
+            <h:column>
+                <f:facet name="header">saseno_id</f:facet>  
+                    #{entity.saseno_id}
+            </h:column>
+            <h:dataTable value="#{memnuniyetRaporuBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">saseno_id</f:facet>  
+                        #{entity.saseno_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">motor_no</f:facet>  
+                        #{entity.motor_no}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">arac_cinsi</f:facet>  
+                        #{entity.arac_cinsi}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">model_yili</f:facet>  
+                        #{entity.model_yili}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">rengi</f:facet>  
+                        #{entity.rengi}
+                </h:column>
+                <h:column>
+                    <h:commandButton  action="#{memnuniyetRaporuBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{memnuniyetRaporuBean.setEntity(entity)}" value="update"/>
+                </h:column> 
+            </h:dataTable>
+        </h:form>
     </body>
 </html>
 

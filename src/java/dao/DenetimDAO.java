@@ -18,7 +18,7 @@ public class DenetimDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "insert into denetim (firma_adi, begenmedim,kismi_begendim, yeterli,begendim) values ('" + c.getFirma_adi() + "','" + c.getBegenmedim() + "','" + c.getKismi_begendim() + "','" + c.getYeterli() + "','" + c.getBegendim() + "')";
+            String query = "insert into denetim (firmasicil_no, denetim_tarihi,denetimbulgu, puan_sonucu) values (" + c.getFirmasicil_no() + "," + c.getDenetim_tarihi()+ ",'" + c.getDenetim_bulgu()+ "'," + c.getPuan_sonucu()+ ")";
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -29,7 +29,7 @@ public class DenetimDAO extends DBConnection {
     public void update(Denetim c) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update memnuniyetRaporu set firma_adi='" + c.getFirma_adi() + "', begenmedim = '" + c.getBegenmedim() + "', kismi_begendim = '" + c.getKismi_begendim() + "',yeterli='" + c.getYeterli() + "', begendim = '" + c.getBegendim() + "' where odeme_id= " + c.getMemnuniyet_id();
+            String query = "update denetim set firmasicil_no=" + c.getFirmasicil_no()+ ", denetim_tarihi = " + c.getDenetim_tarihi() + ", denetim_bulgu = '" + c.getDenetim_bulgu() + "',puan_sonucu=" + c.getPuan_sonucu()+ " where denetim_id= " + c.getDenetim_id();
 
             st.executeUpdate(query);
 
@@ -42,7 +42,7 @@ public class DenetimDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from memnuniyetRaporu where memnuniyet_id = " + c.getMemnuniyet_id();
+            String query = "delete from denetim where denetim_id = " + c.getDenetim_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -51,8 +51,8 @@ public class DenetimDAO extends DBConnection {
 
     }
 
-    public List<odeme> getList() {
-        List<odeme> list = new ArrayList<>();
+    public List<Denetim> getList() {
+        List<Denetim> list = new ArrayList<>();
 
         try {
             Statement st = this.connect().createStatement();

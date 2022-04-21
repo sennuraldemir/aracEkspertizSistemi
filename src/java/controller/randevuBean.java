@@ -4,6 +4,8 @@
  */
 package controller;
 
+import dao.AcikRaporlarDAO;
+import entity.AcikRaporlar;
 import dao.randevuDAO;
 import entity.randevu;
 import jakarta.inject.Named;
@@ -21,27 +23,39 @@ public class randevuBean implements Serializable {
 
     private randevu entity;
     private randevuDAO dao;
+    private AcikRaporlarDAO acikRaporlarDao;
     private List<randevu> list;
+    private List<AcikRaporlar> acikRaporlarList;
 
+    /*
+    private odeme entity;
+    private odemeDAO dao;
+    private AracDAO aracDao;
+    private List<odeme> list;
+    private List<Arac> aracList;
+
+     */
     /**
      * Creates a new instance of randevuBean
      */
     public randevuBean() {
     }
 
-    public void create(){
+    public void create() {
         this.getDao().create(entity);
-        entity=new randevu();
+        entity = new randevu();
     }
-    public void update(){
+
+    public void update() {
         this.getDao().update(entity);
-        entity=new randevu();
+        entity = new randevu();
     }
-    public void delete(){
-        this.getDao().delete(entity);
-        entity=new randevu();
+
+    public void delete(randevu r) {
+        this.getDao().delete(r);
+        entity = new randevu();
     }
-    
+
     public randevu getEntity() {
         if (entity == null) {
             entity = new randevu();
@@ -73,4 +87,28 @@ public class randevuBean implements Serializable {
         this.list = list;
     }
 
+    public List<AcikRaporlar> getAcikRaporlarList() {
+        this.acikRaporlarList = this.getAcikRaporlarDAO().getList();
+        return acikRaporlarList;
+    }
+
+    public void setAcikRaporlarList(List<AcikRaporlar> acikRaporlarList) {
+        this.acikRaporlarList = acikRaporlarList;
+    }
+
+    public AcikRaporlarDAO getAcikRaporlarDAO() {
+        if (acikRaporlarDao == null) {
+            acikRaporlarDao = new AcikRaporlarDAO();
+        }
+        return acikRaporlarDao;
+    }
+
+    public void setAcikRaporlarDao(AcikRaporlarDAO acikRaporlarDao) {
+        this.acikRaporlarDao = acikRaporlarDao;
+    }
+
+  
+    
+    
+    
 }
