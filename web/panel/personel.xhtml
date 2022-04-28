@@ -1,11 +1,75 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <head>
-        <title>Facelet Title</title>
+        <title>personel</title>
     </head>
+    
     <body>
-        Hello from Facelets
+        <h:form>
+            <h:commandButton action="/index" value="/home"/>
+        </h:form>
+        
+        <hr/>
+        
+        <h:form>
+ 
+            personel_id : <h:inputText value="#{personelBean.entity.personel_id}"/><br/>
+            adi : <h:inputText value="#{personelBean.entity.adi}"/><br/>
+            soyadi : <h:inputText value="#{personelBean.entity.soyadi}"/><br/>
+            yas : <h:inputText value="#{personelBean.entity.yas}"/><br/>
+            meslegi : <h:inputText value="#{personelBean.entity.meslegi}"/><br/>
+            
+            <h:commandButton rendered="#{personelBean.entity.personel_id==null}" action="#{personelBean.create()}" value="create"/>
+            <h:commandButton rendered="#{personelBean.entity.personel_id!==null}" action="#{personelBean.update()}" value="Update"/>
+                                                                                                                               
+        </h:form>
+        
+        <hr/>
+        
+        <h:form>
+            
+            <h:column>
+                <f:facet name="header">personel_id</f:facet>
+                    #{entity.personel_id}
+            </h:column>
+            
+            <h:dataTable value="#{personelBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">personel_id</f:facet>
+                        #{entity.personel_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">adi</f:facet>
+                        #{entity.adi}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">soyadi</f:facet>
+                        #{entity.soyadi}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">yas</f:facet>
+                        #{entity.yas}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">meslegi</f:facet>
+                        #{entity.meslegi}
+                </h:column>
+                
+                <h:column>
+                    <h:commandButton action="#{personelBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{personelBean.setEntity(entity)}" value="Update"/>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
     </body>
 </html>
 
