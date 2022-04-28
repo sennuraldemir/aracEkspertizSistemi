@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
 
 import dao.muhasebeDAO;
@@ -13,19 +9,19 @@ import java.util.List;
 
 /**
  *
- * @author Mustafa
+ * @author ZEHRA
  */
+
 @Named(value = "muhasebeBean")
 @SessionScoped
+
 public class muhasebeBean implements Serializable {
 
     private muhasebe entity;
     private muhasebeDAO dao;
     private List<muhasebe> list;
 
-    /**
-     * Creates a new instance of odemeBean
-     */
+    
     public muhasebeBean() {
     }
 
@@ -33,10 +29,12 @@ public class muhasebeBean implements Serializable {
         this.getDao().create(entity);
         entity=new muhasebe();
     }
+    
     public void update(){
         this.getDao().update(entity);
         entity=new muhasebe();
     }
+    
     public void delete(muhasebe a){
         this.getDao().delete(a);
         entity=new muhasebe();

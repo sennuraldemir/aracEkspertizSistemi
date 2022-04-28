@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
+
 package controller;
 
 import dao.personelDAO;
@@ -13,19 +10,18 @@ import java.util.List;
 
 /**
  *
- * @author Mustafa
+ * @author ZEHRA
  */
+
 @Named(value = "personelBean")
 @SessionScoped
+
 public class personelBean implements Serializable {
 
     private personel entity;
     private personelDAO dao;
     private List<personel> list;
-
-    /**
-     * Creates a new instance of odemeBean
-     */
+    
     public personelBean() {
     }
 
@@ -33,10 +29,12 @@ public class personelBean implements Serializable {
         this.getDao().create(entity);
         entity=new personel();
     }
+    
     public void update(){
         this.getDao().update(entity);
         entity=new personel();
     }
+    
     public void delete(personel a){
         this.getDao().delete(a);
         entity=new personel();

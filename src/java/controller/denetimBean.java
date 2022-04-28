@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
-
 
 import dao.DenetimDAO;
 import entity.Denetim;
@@ -12,21 +7,15 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author Mustafa
- */
 @Named(value = "denetimBean")
 @SessionScoped
+
 public class denetimBean implements Serializable {
 
     private Denetim entity;
     private DenetimDAO dao;
     private List<Denetim> list;
 
-    /**
-     * Creates a new instance of odemeBean
-     */
     public denetimBean() {
     }
 
@@ -34,10 +23,12 @@ public class denetimBean implements Serializable {
         this.getDao().create(entity);
         entity=new Denetim();
     }
+    
     public void update(){
         this.getDao().update(entity);
         entity=new Denetim();
     }
+    
     public void delete(Denetim a){
         this.getDao().delete(a);
         entity=new Denetim();
