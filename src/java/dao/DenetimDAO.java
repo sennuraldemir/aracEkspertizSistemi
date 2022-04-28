@@ -61,7 +61,7 @@ public class DenetimDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new denetim(rs.getInt("denetim_id"), rs.getInt("firmasicil_no"), rs.getInt("denetim_tarihi"), rs.getString("denetim_bulgu", rs.getInt("puan_sonucu"))));
+                list.add(new Denetim(rs.getInt("denetim_id"), rs.getInt("firmasicil_no"), rs.getInt("denetim_tarihi"), rs.getString("denetim_bulgu"), rs.getInt("puan_sonucu")));
 
             }
 
