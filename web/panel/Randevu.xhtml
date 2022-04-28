@@ -1,58 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
     <head>
-        <title>Arac</title>
+        <title>Randevu</title>
     </head>
+      
     <body>
         <h:form>
             <h:commandButton action="/index" value="/home"/>
         </h:form>
 
         <hr/>
+          
         <h:form>
-            saseno_id: <h:inputText value="#{AracBean.entity.saseno_id}"/><br/>
-            motor_no : <h:inputText value="#{AracBean.entity.motor_no}"/><br/>
-            arac_cinsi : <h:inputText value="#{AracBean.entity.arac_cinsi}"/><br/>
-            model_yili : <h:inputText value="#{AracBean.entity.model_yili}"/><br/>
-            rengi:      <h:inputText value="#{AracBean.entity.rengi}"/><br/>
+            randevu_id: <h:inputText value="#{RandevuBean.entity.randevu_id}"/><br/>
+            saseno_id: <h:inputText value="#{RandevuBean.entity.saseno_id}"/><br/>
+            tarih : <h:inputText value="#{RandevuBean.entity.tarih}"/><br/>
+            saat : <h:inputText value="#{RandevuBean.entity.saat}"/><br/>
+            adi : <h:inputText value="#{RandevuBean.entity.adi}"/><br/>
+            soyadi : <h:inputText value="#{RandevuBean.entity.soyadi}"/><br/>
 
-            <h:commandButton rendered="#{AracBean.entity.saseno_id==null}" action="#{AracBean.create()}" value="create"/>
-            <h:commandButton rendered="#{AracBean.entity.saseno_id!=null}" action="#{AracBean.update()}" value="Update"/>
+            <h:commandButton rendered="#{RandevuBean.entity.randevu_id==null}" action="#{RandevuBean.create()}" value="create"/>
+            <h:commandButton rendered="#{RandevuBean.entity.randevu_id!=null}" action="#{RandevuBean.update()}" value="Update"/>
 
         </h:form>
+          
         <hr/>
 
         <h:form>
             <h:column>
-                <f:facet name="header">saseno_id</f:facet>  
-                    #{entity.saseno_id}
+                <f:facet name="header">randevu_id</f:facet>  
+                    #{entity.randevu_id}
             </h:column>
-            <h:dataTable value="#{AracBean.list}" var="entity">
+              
+            <h:dataTable value="#{RandevuBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">randevu_id</f:facet>  
+                        #{entity.randevu_id}
+                </h:column>
+                  
                 <h:column>
                     <f:facet name="header">saseno_id</f:facet>  
                         #{entity.saseno_id}
                 </h:column>
+                  
                 <h:column>
-                    <f:facet name="header">motor_no</f:facet>  
-                        #{entity.motor_no}
+                    <f:facet name="header">tarih</f:facet>  
+                        #{entity.tarih}
                 </h:column>
+                  
                 <h:column>
-                    <f:facet name="header">arac_cinsi</f:facet>  
-                        #{entity.arac_cinsi}
+                    <f:facet name="header">saat</f:facet>  
+                        #{entity.saat}
                 </h:column>
+                  
                 <h:column>
-                    <f:facet name="header">model_yili</f:facet>  
-                        #{entity.model_yili}
+                    <f:facet name="header">adi</f:facet>  
+                        #{entity.adi}
                 </h:column>
+                  
                 <h:column>
-                    <f:facet name="header">rengi</f:facet>  
-                        #{entity.rengi}
+                    <f:facet name="header">soyadi</f:facet>  
+                        #{entity.soyadi}
                 </h:column>
+                  
                 <h:column>
-                    <h:commandButton  action="#{AracBean.delete(entity)}" value="delete"/>
-                    <h:commandButton action="#{AracBean.setEntity(entity)}" value="update"/>
+                    <h:commandButton  action="#{RandevuBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{RandevuBean.setEntity(entity)}" value="update"/>
                 </h:column> 
             </h:dataTable>
         </h:form>
