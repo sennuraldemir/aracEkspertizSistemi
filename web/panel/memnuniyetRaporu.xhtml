@@ -3,51 +3,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
+       
     <head>
         <title>memnuniyetRaporu</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </head>
+       
     <body>
+<<<<<<< HEAD
+=======
+           
+        <h:form>
+            <h:commandButton action="/index" value="/home"/>
+        </h:form>
+>>>>>>> origin/master
 
         <hr/>
+           
         <h:form>
-            saseno_id: <h:inputText value="#{memnuniyetRaporuBean.entity.saseno_id}"/><br/>
-            motor_no : <h:inputText value="#{memnuniyetRaporuBean.entity.motor_no}"/><br/>
-            arac_cinsi : <h:inputText value="#{memnuniyetRaporuBean.entity.arac_cinsi}"/><br/>
-            model_yili : <h:inputText value="#{memnuniyetRaporuBean.entity.model_yili}"/><br/>
-            rengi:      <h:inputText value="#{memnuniyetRaporuBean.entity.rengi}"/><br/>
+            memnuniyet_id: <h:inputText value="#{memnuniyetRaporuBean.entity.memnuniyet_id}"/><br/>
+            firma_adi : <h:inputText value="#{memnuniyetRaporuBean.entity.firma_adi}"/><br/>
+            begenmedim : <h:inputText value="#{memnuniyetRaporuBean.entity.begenmedim}"/><br/>
+            kismi_begendim : <h:inputText value="#{memnuniyetRaporuBean.entity.kismi_begendim}"/><br/>
+            begendim : <h:inputText value="#{memnuniyetRaporuBean.entity.begendim}"/><br/>
+            yeterli : <h:inputText value="#{memnuniyetRaporuBean.entity.yeterli}"/><br/>
             
-            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.saseno_id==null}" action="#{memnuniyetRaporuBean.create()}" value="create"/>
-            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.saseno_id!=null}" action="#{memnuniyetRaporuBean.update()}" value="Update"/>
+            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.memnuniyet_id==null}" action="#{memnuniyetRaporuBean.create()}" value="create"/>
+            <h:commandButton rendered="#{memnuniyetRaporuBean.entity.memnuniyet_id!=null}" action="#{memnuniyetRaporuBean.update()}" value="Update"/>
 
         </h:form>
+           
         <hr/>
 
         <h:form>
+               
             <h:column>
-                <f:facet name="header">saseno_id</f:facet>  
-                    #{entity.saseno_id}
+                <f:facet name="header">memnuniyet_id</f:facet>  
+                    #{entity.memnuniyet_id}
             </h:column>
+               
             <h:dataTable value="#{memnuniyetRaporuBean.list}" var="entity">
+                   
                 <h:column>
-                    <f:facet name="header">saseno_id</f:facet>  
-                        #{entity.saseno_id}
+                    <f:facet name="header">memnuniyet_id</f:facet>  
+                        #{entity.memnuniyet_id}
                 </h:column>
+                   
                 <h:column>
-                    <f:facet name="header">motor_no</f:facet>  
-                        #{entity.motor_no}
+                    <f:facet name="header">firma_adi</f:facet>  
+                        #{entity.firma_adi}
                 </h:column>
+                   
                 <h:column>
-                    <f:facet name="header">arac_cinsi</f:facet>  
-                        #{entity.arac_cinsi}
+                    <f:facet name="header">begenmedim</f:facet>  
+                        #{entity.begenmedim}
                 </h:column>
+                   
                 <h:column>
-                    <f:facet name="header">model_yili</f:facet>  
-                        #{entity.model_yili}
+                    <f:facet name="header">kismi_begendim</f:facet>  
+                        #{entity.kismi_begendim}
                 </h:column>
+                   
                 <h:column>
-                    <f:facet name="header">rengi</f:facet>  
-                        #{entity.rengi}
+                    <f:facet name="header">begendim</f:facet>  
+                        #{entity.begendim}
                 </h:column>
+                   
+                <h:column>
+                    <f:facet name="header">yeterli</f:facet>  
+                        #{entity.yeterli}
+                </h:column>
+                   
                 <h:column>
                     <h:commandButton  action="#{memnuniyetRaporuBean.delete(entity)}" value="delete"/>
                     <h:commandButton action="#{memnuniyetRaporuBean.setEntity(entity)}" value="update"/>

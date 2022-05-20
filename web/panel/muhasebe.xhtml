@@ -1,12 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <head>
-        <title>Facelet Title</title>
+        <title>muhasebe</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </head>
+    
     <body>
+<<<<<<< HEAD
         
         Hello from Facelets
+=======
+        <h:form>
+            <h:commandButton action="/index" value="/home"/>
+        </h:form>
+        
+        <hr/>
+        
+        <h:form>
+            firmasicilno_id : <h:inputText value="#{muhasebeBean.entity.firmasicilno_id}"/><br/>
+            personel_id : <h:inputText value="#{muhasebeBean.entity.personel_id}"/><br/>
+            firma_adi : <h:inputText value="#{muhasebeBean.entity.firma_adi}"/><br/>
+            odeme_bilgileri : <h:inputText value="#{muhasebeBean.entity.odeme_bilgileri}"/><br/>
+            gider_tipleri : <h:inputText value="#{muhasebeBean.entity.gider_tipleri}"/><br/>
+            
+            <h:commandButton rendered="#{muhasebeBean.entity.firmasicilno_id==null}" action="#{muhasebeBean.create()}" value="create"/>
+            <h:commandButton rendered="#{muhasebeBean.entity.firmasicilno_id!=null}" action="#{muhasebeBean.update()}" value="Update"/>
+                                                                                                                               
+        </h:form>
+        
+        <hr/>
+        
+        <h:form>
+            
+            <h:column>
+                <f:facet name="header">firmasicilno_id</f:facet>
+                    #{entity.firmasicilno_id}
+            </h:column>
+            
+            <h:dataTable value="#{muhasebeBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">firmasicilno_id</f:facet>
+                        #{entity.firmasicilno_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">personel_id</f:facet>
+                        #{entity.personel_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">firma_adi</f:facet>
+                        #{entity.firma_adi}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">odeme_bilgileri</f:facet>
+                        #{entity.odeme_bilgileri}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">gider_tipleri</f:facet>
+                        #{entity.gider_tipleri}
+                </h:column>
+                
+                <h:column>
+                    <h:commandButton action="#{muhasebeBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{muhasebeBean.setEntity(entity)}" value="Update"/>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+>>>>>>> origin/master
     </body>
 </html>
 
