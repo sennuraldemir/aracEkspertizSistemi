@@ -8,21 +8,22 @@
     </h:head>
     <h:body>
 
+        <div class="container mt-5">
+            <h:form> 
+                <h:commandButton styleClass="btn btn-danger" action="/login?faces.redirect=true" value="Login"/>
+                <h:commandButton styleClass="btn btn-dark" action="/logout?faces.redirect=true" value="Logout"/>
+                <h:commandButton styleClass="btn btn-primary" action="/panel/Arac.xhtml" value="Arac"/>
+                <h:commandButton styleClass="btn btn-info"    action="/panel/AcikRaporlar.xhtml" value="AcikRaporlar"/>
+                <h:commandButton styleClass="btn btn-danger" action="/panel/sorgular.xhtml" value="sorgular"/>
+                <h:commandButton styleClass="btn btn-warning" action="/panel/Odeme.xhtml" value="Odeme"/>
+                <h:commandButton styleClass="btn btn-secondary" action="/panel/Randevu.xhtml" value="Randevu"/>
+                <h:commandButton styleClass="btn btn-primary" action="/panel/muhasebe.xhtml" value="muhasebe"/>
+                <h:commandButton styleClass="btn btn-success" action="/panel/personel.xhtml" value="personel"/> 
+                <h:commandButton styleClass="btn btn-danger" action="/panel/denetim.xhtml" value="denetim"/> 
+                <h:commandButton styleClass="btn btn-dark" action="/panel/memnuniyetRaporu.xhtml" value="memnuniyetRaporu"/> 
 
-        <h:form> 
-
-            <h:commandButton styleClass="btn btn-primary" action="/panel/Arac.xhtml" value="Arac"/>
-            <h:commandButton styleClass="btn btn-info"    action="/panel/AcikRaporlar.xhtml" value="AcikRaporlar"/>
-            <h:commandButton styleClass="btn btn-danger" action="/panel/sorgular.xhtml" value="sorgular"/>
-            <h:commandButton styleClass="btn btn-warning" action="/panel/Odeme.xhtml" value="Odeme"/>
-            <h:commandButton styleClass="btn btn-secondary" action="/panel/Randevu.xhtml" value="Randevu"/>
-            <h:commandButton styleClass="btn btn-primary" action="/panel/muhasebe.xhtml" value="muhasebe"/>
-            <h:commandButton styleClass="btn btn-success" action="/panel/personel.xhtml" value="personel"/> 
-            <h:commandButton styleClass="btn btn-danger" action="/panel/denetim.xhtml" value="denetim"/> 
-            <h:commandButton styleClass="btn btn-dark" action="/panel/memnuniyetRaporu.xhtml" value="memnuniyetRaporu"/> 
-
-        </h:form>                                      
-
+            </h:form>                                      
+        </div>
     </h:body>
 </html>
- 
+
