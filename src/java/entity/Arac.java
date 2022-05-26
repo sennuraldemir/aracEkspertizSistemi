@@ -14,6 +14,11 @@ public class Arac {
     private String arac_cinsi;
     private int model_yili;
     private String rengi;
+    
+//    public Arac(String saseno_id, String motor_no) {
+//         this.saseno_id = saseno_id;
+//        this.motor_no = motor_no;
+//    }
 
     public Arac(String saseno_id, String motor_no, String arac_cinsi, int model_yili, String rengi) {
         this.saseno_id = saseno_id;

@@ -23,6 +23,38 @@ public class AracBean implements Serializable {
     private AracDAO dao;
     private List<Arac> list;
 
+    
+    private int page=1;
+    private int pageSize=5;
+    private int pageCount;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount=(int)Math.ceil(this.getAracDAO().(double)count()/pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+    
+    
+    
     /**
      * Creates a new instance of odemeBean
      */

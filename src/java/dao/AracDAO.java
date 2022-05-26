@@ -15,6 +15,21 @@ import java.util.List;
  * @author Sennur
  */
 public class AracDAO extends DBConnection{
+//    public Arac findByID(String saseno_id){
+//        Arac a=null;
+//         try { 
+//             Statement st = this.connect().createStatement();
+//             String query ="select*from arac where saseno_id= "+saseno_id;
+//             ResultSet rs =st.executeQuery(query);
+//             
+//             while(rs.next()){
+//                 a=new Arac (rs.getString("saseno_id"),rs.getString("motor_no"));
+//             }
+//        }catch (Exception e ){
+//            System.out.println(e.getMessage());
+//        }
+//         return a;
+//    }
     
     public void create(Arac a){
          try { 
@@ -50,8 +65,8 @@ public class AracDAO extends DBConnection{
         }
         
     }
-    public List<Arac> getList(){
-        List<Arac> list = new ArrayList<>();
+    public List<Arac> getList() {//(int page,int pageSize){//public List<Arac> getList() count(int page,int pageSize){
+        List<Arac> list = new ArrayList<>();//int count=0;
          try { 
              Statement st= this.connect().createStatement();
              String query = "select * from Arac";

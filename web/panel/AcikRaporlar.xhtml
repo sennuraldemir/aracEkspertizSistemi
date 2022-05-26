@@ -15,9 +15,9 @@
         <h:form>
             isemriNo : <h:inputText value="#{AcikRaporlarBean.entity.isemriNo}"/>
             plaka    : <h:inputText value="#{AcikRaporlarBean.entity.plaka_id}"/>
-            <h:commandButton rendered="#{AcikRaporlarBean.entity.plaka_id==null}" action="#{AcikRaporlarBean.create()}" value="create"/>
-            <h:commandButton rendered="#{AcikRaporlarBean.entity.plaka_id!=null}" action="#{AcikRaporlarBean.update()}" value="Update"/>
-            <h:commandButton rendered="#{AcikRaporlarBean.entity.plaka_id!=null}" action="#{AcikRaporlarBean.clear()}" value="Clear Form"/>
+            <h:commandButton styleClass="btn-btn-danger" rendered="#{AcikRaporlarBean.entity.plaka_id==null}" action="#{AcikRaporlarBean.create()}" value="create"/>
+            <h:commandButton styleClass="btn-btn-danger" rendered="#{AcikRaporlarBean.entity.plaka_id!=null}" action="#{AcikRaporlarBean.update()}" value="Update"/>
+            <h:commandButton styleClass="btn-btn-danger" rendered="#{AcikRaporlarBean.entity.plaka_id!=null}" action="#{AcikRaporlarBean.clear()}" value="Clear Form"/>
         </h:form>
         <hr/>
 
