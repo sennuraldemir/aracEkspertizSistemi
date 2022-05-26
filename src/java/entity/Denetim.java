@@ -6,7 +6,7 @@ package entity;
 
 /**
  *
- * @author Mustafa
+ * @author sennur
  */
 public class Denetim {
 
@@ -67,9 +67,8 @@ public class Denetim {
         this.puan_sonucu = puan_sonucu;
     }
 
-    public String getFirma_adi() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
+    
+ 
 
 }

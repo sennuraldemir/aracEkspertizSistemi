@@ -8,7 +8,7 @@
         <title>denetim</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </head>
-     
+       
     <body>
            
         <h:form>
@@ -19,13 +19,13 @@
            
         <h:form>
             denetim_id <h:inputText value="#{denetimBean.entity.denetim_id}"/><br/>
-            firmasicilno_id : <h:inputText value="#{denetimBean.entity.firmasicil_no}"/><br/>
+            firmasicil_no : <h:inputText value="#{denetimBean.entity.firmasicil_no}"/><br/>
             denetim_tarihi : <h:inputText value="#{denetimBean.entity.denetim_tarihi}"/><br/>
-            denetim_bulgulari : <h:inputText value="#{denetimBean.entity.denetim_bulgu}"/><br/>
+            denetim_bulgu : <h:inputText value="#{denetimBean.entity.denetim_bulgu}"/><br/>
             puan_sonucu : <h:inputText value="#{denetimBean.entity.puan_sonucu}"/><br/>
             
-            <h:commandButton rendered="#{denetimBean.entity.denetim_id==null}" action="#{denetimBean.create()}" value="create"/>
-            <h:commandButton rendered="#{denetimBean.entity.denetim_id!=null}" action="#{denetimBean.update()}" value="Update"/>
+            <h:commandButton rendered="#{denetimBean.entity.denetim_id!=null}" action="#{denetimBean.create()}" value="create"/>
+            <h:commandButton rendered="#{denetimBean.entity.denetim_id==null}" action="#{denetimBean.update()}" value="Update"/>
 
         </h:form>
            
@@ -46,8 +46,8 @@
                 </h:column>
                    
                 <h:column>
-                    <f:facet name="header">firmasicil_no</f:facet>  
-                        #{entity.firmasicil_no}
+                    <f:facet name="header">firmasicilno_id</f:facet>  
+                        #{entity.firmasicilno_id}
                 </h:column>
                    
                 <h:column>
@@ -56,8 +56,8 @@
                 </h:column>
                    
                 <h:column>
-                    <f:facet name="header">denetim_bulgu</f:facet>  
-                        #{entity.denetim_bulgu}
+                    <f:facet name="header">denetim_bulgulari</f:facet>  
+                        #{entity.denetim_bulgulari}
                 </h:column>
                    
                 <h:column>

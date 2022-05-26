@@ -45,7 +45,7 @@ public class AracBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount=(int)Math.ceil(this.getAracDAO().(double)count()/pageSize);
+        this.pageCount=(int)Math.ceil(this.getAracDao().(double)count()/pageSize);
         return pageCount;
     }
 

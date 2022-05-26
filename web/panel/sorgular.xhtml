@@ -1,25 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
         <title>sorgular</title>
+
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </head>
     <body>
         <h:form>
             <h:commandButton action="/index" value="/home"/>
         </h:form>
+
         <hr/>
         <h:form>
-            saseno_id: <h:inputText value="#{sorgularBean.entity.saseno_id}"/><br/>
-            plaka_id : <h:inputText value="#{sorgularBean.entity.plaka_id}"/><br/>
+
+            Arac:
+            <h:selectOneMenu value="#{sorgularBean.entity.saseno_id}">
+                <f:selectItems value="#{sorgularBean.aracList}" var="c" itemValue="#{c.saseno_id}" itemLabel="#{c.saseno_id}"/>
+            </h:selectOneMenu>
+            <br/>
+
+            AcikRaporlar:
+            <h:selectOneMenu value="#{sorgularBean.entity.plaka_id}">
+                <f:selectItems value="#{sorgularBean.acikRaporlarList}" var="c" itemValue="#{c.plaka_id}" itemLabel="#{c.plaka_id}"/>
+            </h:selectOneMenu>
+            <br/>
+
+
+
             bilgi : <h:inputText value="#{sorgularBean.entity.bilgi}"/><br/>
-    
-            
-            <h:commandButton rendered="#{sorgularBean.entity.saseno_id==null}" action="#{sorgularBean.create()}" value="create"/>
-            <h:commandButton rendered="#{sorgularBean.entity.saseno_id!=null}" action="#{sorgularBean.update()}" value="Update"/>
+
+
+            <h:commandButton rendered="#{sorgularBean.entity.saseno_id==null}" action="#{sorgularBean.create()}" value="create"/><br/>
+            <h:commandButton rendered="#{sorgularBean.entity.saseno_id!=nulls}" action="#{sorgularBean.update()}" value="Update"/><br/>
 
         </h:form>
         <hr/>
@@ -42,7 +57,7 @@
                     <f:facet name="header">bilgi</f:facet>  
                         #{entity.bilgi}
                 </h:column>
-                
+
                 <h:column>
                     <h:commandButton  action="#{sorgularBean.delete(entity)}" value="delete"/>
                     <h:commandButton action="#{sorgularBean.setEntity(entity)}" value="update"/>

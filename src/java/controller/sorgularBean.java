@@ -4,7 +4,11 @@
  */
 package controller;
 
+import dao.AcikRaporlarDAO;
+import dao.AracDAO;
 import dao.sorgularDAO;
+import entity.AcikRaporlar;
+import entity.Arac;
 import entity.sorgular;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
@@ -13,15 +17,24 @@ import java.util.List;
 
 /**
  *
- * @author Mustafa
+ * @author sennur
  */
 @Named(value = "sorgularBean")
 @SessionScoped
 public class sorgularBean implements Serializable {
 
+    
     private sorgular entity;
     private sorgularDAO dao;
     private List<sorgular> list;
+    
+    private AracDAO aracDao;
+    private List<Arac> aracList;
+    
+    private AcikRaporlarDAO acikRaporlarDao;
+    private List<AcikRaporlar> acikRaporlarList;
+    
+    
 
     /**
      * Creates a new instance of odemeBean
@@ -41,10 +54,7 @@ public class sorgularBean implements Serializable {
         this.getDao().delete(a);
         entity=new sorgular();
     }
-    
-    public void clear(){
-        entity=new sorgular();
-    }
+   
     
     public sorgular getEntity() {
         if (entity == null) {
@@ -76,5 +86,57 @@ public class sorgularBean implements Serializable {
     public void setList(List<sorgular> list) {
         this.list = list;
     }
+    
+    
+    
+    //------------------------------------
+    
+    public List<Arac> getAracList() {
+        this.aracList = this.getAracDao().getList();
+        return aracList;
+    }
+
+    public void setAracList(List<Arac> aracList) {
+        this.aracList = aracList;
+    }
+
+    public AracDAO getAracDao() {
+        if (aracDao == null) {
+            aracDao = new AracDAO();
+        }
+        return aracDao;
+    }
+
+    public void setAracDao(AracDAO aracDao) {
+        this.aracDao = aracDao;
+    }
+
+    public AcikRaporlarDAO getAcikRaporlarDao() {
+        if(acikRaporlarDao==null){
+            acikRaporlarDao=new AcikRaporlarDAO();
+        }
+        return acikRaporlarDao;
+    }
+
+    public void setAcikRaporlarDao(AcikRaporlarDAO acikRaporlarDao) {
+        this.acikRaporlarDao = acikRaporlarDao;
+    }
+
+    public List<AcikRaporlar> getAcikRaporlarList() {
+        this.acikRaporlarList=this.getAcikRaporlarDao().getList();
+        return acikRaporlarList;
+    }
+
+    public void setAcikRaporlarList(List<AcikRaporlar> acikRaporlarList) {
+        this.acikRaporlarList = acikRaporlarList;
+    }
+    
+
+    
+    
+    
+    
+    
+    
 
 }
