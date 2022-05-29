@@ -15,35 +15,43 @@ import java.util.List;
  *
  * @author Sennur
  */
-@Named(value = "AracBean")
+@Named(value = "aracBean")
 @SessionScoped
 public class AracBean implements Serializable {
 
     private Arac entity;
     private AracDAO dao;
     private List<Arac> list;
-    
-    
+
+    /**
+     * Creates a new instance of odemeBean
+     */
     public AracBean() {
     }
 
-    public void create(){
+    public void clearForm() {
+        this.entity = new Arac();
+    }
+
+    public void create() {
         this.getDao().create(entity);
-        entity=new Arac();
+        entity = new Arac();
     }
-    public void update(){
+
+    public void update() {
         this.getDao().update(entity);
-        entity=new Arac();
+        entity = new Arac();
     }
-    public void delete(Arac a){
-        this.getDao().delete(a);
-        entity=new Arac();
+
+    public void delete() {
+        this.getDao().delete(entity);
+        entity = new Arac();
     }
-    
-    public void clear(){
-        entity=new Arac();
+
+    public void clear() {
+        entity = new Arac();
     }
-    
+
     public Arac getEntity() {
         if (entity == null) {
             entity = new Arac();
