@@ -5,8 +5,10 @@
 package controller;
 
 import dao.AcikRaporlarDAO;
-import entity.AcikRaporlar;
+import dao.AracDAO;
 import dao.randevuDAO;
+import entity.AcikRaporlar;
+import entity.Arac;
 import entity.randevu;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
@@ -23,8 +25,8 @@ public class randevuBean implements Serializable {
 
     private randevu entity;
     private randevuDAO dao;
-    private AcikRaporlarDAO acikRaporlarDao;
     private List<randevu> list;
+    private AcikRaporlarDAO acikRaporlarDao;
     private List<AcikRaporlar> acikRaporlarList;
 
     /*
@@ -87,18 +89,9 @@ public class randevuBean implements Serializable {
         this.list = list;
     }
 
-    public List<AcikRaporlar> getAcikRaporlarList() {
-        this.acikRaporlarList = this.getAcikRaporlarDAO().getList();
-        return acikRaporlarList;
-    }
-
-    public void setAcikRaporlarList(List<AcikRaporlar> acikRaporlarList) {
-        this.acikRaporlarList = acikRaporlarList;
-    }
-
-    public AcikRaporlarDAO getAcikRaporlarDAO() {
-        if (acikRaporlarDao == null) {
-            acikRaporlarDao = new AcikRaporlarDAO();
+    public AcikRaporlarDAO getAcikRaporlarDao() {
+         if(acikRaporlarDao==null){
+            acikRaporlarDao=new AcikRaporlarDAO();
         }
         return acikRaporlarDao;
     }
@@ -107,8 +100,15 @@ public class randevuBean implements Serializable {
         this.acikRaporlarDao = acikRaporlarDao;
     }
 
-  
+    public List<AcikRaporlar> getAcikRaporlarList() {
+        this.acikRaporlarList=this.getAcikRaporlarDao().getList();
+        return acikRaporlarList;
+    }
+
+    public void setAcikRaporlarList(List<AcikRaporlar> acikRaporlarList) {
+        this.acikRaporlarList = acikRaporlarList;
+    }
+
     
-    
-    
+
 }

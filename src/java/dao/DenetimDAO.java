@@ -1,74 +1,79 @@
 package dao;
 
 import entity.Denetim;
-import entity.MemnuniyetRaporu;
-import entity.odeme;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import util.DBConnection;
 
 public class DenetimDAO extends DBConnection {
 
-    private Connection db;
-
-    public void create(Denetim c) {
-
-        try {
-            Statement st = this.connect().createStatement();
-
-            String query = "insert into denetim (firmasicil_no, denetim_tarihi,denetimbulgu, puan_sonucu) values (" + c.getFirmasicil_no() + "," + c.getDenetim_tarihi()+ ",'" + c.getDenetim_bulgu()+ "'," + c.getPuan_sonucu()+ ")";
-            st.executeUpdate(query);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+    public DenetimDAO() {
     }
 
-    public void update(Denetim c) {
-        try {
-            Statement st = this.connect().createStatement();
-            String query = "update denetim set firmasicil_no=" + c.getFirmasicil_no()+ ", denetim_tarihi = " + c.getDenetim_tarihi() + ", denetim_bulgu = '" + c.getDenetim_bulgu() + "',puan_sonucu=" + c.getPuan_sonucu()+ " where denetim_id= " + c.getDenetim_id();
-
-            st.executeUpdate(query);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    public void delete(Denetim c) {
-        try {
-            Statement st = this.connect().createStatement();
-
-            String query = "delete from denetim where denetim_id = " + c.getDenetim_id();
-            st.executeUpdate(query);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-    }
-
-    public List<Denetim> getList() {
+    public List<Denetim> readList() {
         List<Denetim> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
-            String query = "select * from denetim";
-
-            ResultSet rs = st.executeQuery(query);
-
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select*from denetim");
             while (rs.next()) {
-                list.add(new Denetim(rs.getInt("denetim_id"), rs.getInt("firmasicil_no"), rs.getInt("denetim_tarihi"), rs.getString("denetim_bulgu"), rs.getInt("puan_sonucu")));
+                list.add(new Denetim(rs.getLong("id"), rs.getString("title"), rs.getDate("created"), rs.getDate("updated")));
 
             }
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return list;
+    }
+
+    public List<Denetim> readList(int page) {
+        int offset = (page - 1) * 5;
+        List<Denetim> list = new ArrayList<>();
+
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select*from denetim id limit 5 offset " + offset);
+            
+            while (rs.next()) {
+                list.add(new Denetim(rs.getLong("id"), rs.getString("title"), rs.getDate("created"), rs.getDate("updated")));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+
+    public void create(Denetim d) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("insert into denetim(title) values ('" + d.getTitle() + "')");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void update(Denetim d) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("update denetim set title='" + d.getTitle() + "'where id=" + d.getId());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void delete(Denetim d) {
+        try {
+            Statement st = this.getConnection().createStatement();
+            st.executeUpdate("delete from denetim where id=" + d.getId());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

@@ -1,74 +1,96 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
-       
-    <head>
-        <title>denetim</title>
-        <h:outputStylesheet library="css" name="bootstrap.min.css" />
-    </head>
-       
-    <body>
-           
-        <h:form>
-            <h:commandButton action="/index" value="/home"/>
-        </h:form>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-        <hr/>
-           
-        <h:form>
-            denetim_id <h:inputText value="#{denetimBean.entity.denetim_id}"/><br/>
-            firmasicil_no : <h:inputText value="#{denetimBean.entity.firmasicil_no}"/><br/>
-            denetim_tarihi : <h:inputText value="#{denetimBean.entity.denetim_tarihi}"/><br/>
-            denetim_bulgu : <h:inputText value="#{denetimBean.entity.denetim_bulgu}"/><br/>
-            puan_sonucu : <h:inputText value="#{denetimBean.entity.puan_sonucu}"/><br/>
-            
-            <h:commandButton rendered="#{denetimBean.entity.denetim_id!=null}" action="#{denetimBean.create()}" value="create"/>
-            <h:commandButton rendered="#{denetimBean.entity.denetim_id==null}" action="#{denetimBean.update()}" value="Update"/>
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <title>Denetim</title>
+    </h:head>
 
-        </h:form>
-           
-        <hr/>
+    <h:body>
+        <div class ="container">
+            <div class="row">
+                <h:form styleClass="my-3"> 
+                    <h:commandButton styleClass="btn" action="/panel/Arac.xhtml" value="Arac"/>
+                    <h:commandButton styleClass="btn" action="/panel/AcikRaporlar.xhtml" value="Açık Raporlar"/>
+                    <h:commandButton styleClass="btn" action="/panel/sorgular.xhtml" value="Sorular"/>
+                    <h:commandButton styleClass="btn" action="/panel/Odeme.xhtml" value="Odeme"/>
+                    <h:commandButton styleClass="btn" action="/panel/Randevu.xhtml" value="Randevu"/>
+                    <h:commandButton styleClass="btn" action="/panel/muhasebe.xhtml" value="Muhasebe"/>
+                    <h:commandButton styleClass="btn" action="/panel/personel.xhtml" value="Personel"/> 
+                    <h:commandButton styleClass="btn" action="/panel/denetim.xhtml" value="Denetim"/> 
+                    <h:commandButton styleClass="btn" action="/panel/memnuniyetRaporu.xhtml" value="Memnuniyet Raporu"/> 
+                    <h:commandButton styleClass="btn" action="/panel/group.xhtml" value="Group"/>
+                    <h:commandButton styleClass="btn" action="/panel/user.xhtml" value="User"/>
+                    <h:commandButton styleClass="btn" action="/panel/privilege.xhtml" value="Privilege"/>
+                </h:form> 
+            </div>
+            <div class="row">
+            <div class="col">
+                <h:form>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Title
+                                </th>
+                                <th>
+                                    Created
+                                </th>
+                                <th>
+                                    Updated
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat value="#{denetimBean.list}" var="e">
+                                <tr>
+                                    <td>#{e.id}</td>
+                                    <td>
+                                        <h:commandLink action="#{denetimBean.setEntity(e)}" value="#{e.title}"/>
+                                    </td>
+                                    <td>#{e.created}</td>
+                                    <td>#{e.updated}</td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                        <tfoot>
+                           
+                                <h3>Page: #{denetimBean.page}/#{denetimBean.pageCount}</h3>
+                                <h:commandButton styleClass="btn btn-sm btn-success" action="#{denetimBean.previous()}" value="previous"/>
+                                <h:commandButton styleClass="btn btn-sm btn-success" action="#{denetimBean.next()}" value="next"/>
+                            
+                        </tfoot>
 
-        <h:form>
-               
-            <h:column>
-                <f:facet name="header">denetim_id</f:facet>  
-                    #{entity.denetim_id}
-            </h:column>
-               
-            <h:dataTable value="#{denetimBean.list}" var="entity">
-                   
-                <h:column>
-                    <f:facet name="header">denetim_id</f:facet>  
-                        #{entity.denetim_id}
-                </h:column>
-                   
-                <h:column>
-                    <f:facet name="header">firmasicilno_id</f:facet>  
-                        #{entity.firmasicilno_id}
-                </h:column>
-                   
-                <h:column>
-                    <f:facet name="header">denetim_tarihi</f:facet>  
-                        #{entity.denetim_tarihi}
-                </h:column>
-                   
-                <h:column>
-                    <f:facet name="header">denetim_bulgulari</f:facet>  
-                        #{entity.denetim_bulgulari}
-                </h:column>
-                   
-                <h:column>
-                    <f:facet name="header">puan_sonucu</f:facet>  
-                        #{entity.puan_sonucu}
-                </h:column>
-                <h:column>
-                    <h:commandButton  action="#{denetimBean.delete(entity)}" value="delete"/>
-                    <h:commandButton action="#{denetimBean.setEntity(entity)}" value="update"/>
-                </h:column> 
-            </h:dataTable>
-        </h:form>
-    </body>
+                    </table>
+                </h:form>
+            </div>   
+            <div class="col">
+                <h:form>
+                    <div class="mb-3">
+                        <label>Title</label>
+                        <h:inputText value="#{denetimBean.entity.title}" styleClass="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <h:commandButton styleClass="btn btn-success" rendered="#{denetimBean.entity.id==null}" action="#{denetimBean.create}" value="Create"/>
+                        <h:commandButton styleClass="btn btn-primary" rendered="#{denetimBean.entity.id!=null}" action="#{denetimBean.update}" value="Update"/>
+                        <h:commandButton styleClass="btn btn-danger" rendered="#{denetimBean.entity.id!=null}" action="#{denetimBean.delete}" value="Delete"/>
+                        <h:commandButton styleClass="btn btn-outline-secondary" rendered="#{denetimBean.entity.id!=null}" action="#{denetimBean.clearForm}" value="ClearForm"/>
+                    
+                    </div>
+                </h:form>
+
+
+
+            </div>
+            </div>
+
+        </div>
+    </h:body>
 </html>

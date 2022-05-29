@@ -5,6 +5,7 @@
 package dao;
 
 import entity.sorgular;
+import util.DBConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class sorgularDAO extends DBConnection {
 
     public void create(sorgular a){
          try { 
-             Statement st = this.connect().createStatement();
-             String query = "insert into sorgular (saseno_id,plaka_id,blgi) values ('"+a.getSaseno_id()+"','"+a.getPlaka_id()+"','"+a.getBilgi()+"')";
+              Statement st = this.getConnection().createStatement();
+             String query = "insert into sorgular (saseno_id,plaka_id,bilgi) values ('"+a.getSaseno_id()+"','"+a.getPlaka_id()+"','"+a.getBilgi()+"')";
              
              st.executeUpdate(query);
              
@@ -30,7 +31,7 @@ public class sorgularDAO extends DBConnection {
     }
     public void update(sorgular a){
        try { 
-             Statement st= this.connect().createStatement();
+              Statement st = this.getConnection().createStatement();
              String query = "update sorgular set saseno_id= '"+a.getSaseno_id()+"' , plaka_id='"+a.getPlaka_id()+"', bilgi='"+a.getBilgi()+"' where saseno_id='"+a.getSaseno_id()+"'";
              st.executeUpdate(query);
              
@@ -40,7 +41,7 @@ public class sorgularDAO extends DBConnection {
     }
     public void delete(sorgular a){
          try { 
-             Statement st= this.connect().createStatement();
+              Statement st = this.getConnection().createStatement();
              String query = "delete from sorgular where saseno_id=  '"+a.getSaseno_id()+"'";
              
              st.executeUpdate(query);
@@ -53,7 +54,7 @@ public class sorgularDAO extends DBConnection {
     public List<sorgular> getList() {
         List<sorgular> list = new ArrayList<>();
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "select * from sorgular";
 
             ResultSet rs = st.executeQuery(query);

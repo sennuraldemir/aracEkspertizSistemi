@@ -2,7 +2,7 @@
 package dao;
 
 import entity.odeme;
-import java.sql.Connection;
+import util.DBConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import java.util.List;
 
 public class odemeDAO extends DBConnection{
     
-    private Connection db;
+    
 
     public void create(odeme c) {
         
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
 
             String query = "insert into odeme (sase_no, kredi_karti,nakit, havale) values ('" + c.getSase_no() + "','" + c.getKredi_karti() + "','" + c.getNakit() + "','" + c.getHavale() + "')";
             st.executeUpdate(query);
@@ -29,7 +29,7 @@ public class odemeDAO extends DBConnection{
 
     public void update(odeme c) {
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query="update odeme set sase_no='"+c.getSase_no()+ "', kredi_karti = '" + c.getKredi_karti() + "', nakit = '" + c.getNakit() + "', havale = '" + c.getHavale() +  "' where odeme_id= "+c.getOdeme_id();
             
             st.executeUpdate(query);
@@ -41,7 +41,7 @@ public class odemeDAO extends DBConnection{
 
     public void delete(odeme c) {
         try {
-            Statement st = this.connect().createStatement();
+           Statement st = this.getConnection().createStatement();
 
             String query = "delete from odeme where odeme_id = " + c.getOdeme_id();
             st.executeUpdate(query);
@@ -56,7 +56,7 @@ public class odemeDAO extends DBConnection{
         List<odeme> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query ="select * from odeme";
         
 
@@ -75,18 +75,7 @@ public class odemeDAO extends DBConnection{
         return list;
     }
 
-    public Connection getDb() {
-        if (this.db == null) {
-
-            this.db = this.connect();
-        }
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
-
+ 
 }
 
     

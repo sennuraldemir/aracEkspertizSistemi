@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarNav">
+            <h:form>
+                <ul class="navbar-nav">
+                    <li classs="nav-item active">
+                        <h:commandLink styleClass="nav-link" action="#{navigationBean.page('odeme')}" value="Odeme"/>
+                    </li>
+                </ul>
+              
+                <ul class="navbar-nav">
+                    <li classs="nav-item active">
+                        <h:commandLink styleClass="nav-link" action="#{navigationBean.page('document')}" value="Document"/>
+                    </li>
+                </ul>
+            </h:form>
+        </div>
+    </nav> 
+</ui:composition>
+

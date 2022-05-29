@@ -1,7 +1,7 @@
 package dao;
 
 import entity.personel;
-import java.sql.Connection;
+import util.DBConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class personelDAO extends DBConnection {
 
     public void create(personel c) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "insert into personel(adi, soyadi, yas, meslegi) values('" + c.getAdi() + "','" + c.getSoyadi() + "','" + c.getYas() + "','" + c.getMeslegi() + "')";
             st.executeUpdate(query);
@@ -26,7 +26,7 @@ public class personelDAO extends DBConnection {
 
     public void update(personel c) {
         try {
-            Statement st = this.connect().createStatement();
+           Statement st = this.getConnection().createStatement();
 
             String query = "update personel set adi='" + c.getAdi() + "', soyadi='" + c.getSoyadi() + "', yas='" + c.getYas() + "', meslegi='" + c.getMeslegi() + "' where id=" + c.getPersonel_id();
             st.executeUpdate(query);
@@ -40,7 +40,7 @@ public class personelDAO extends DBConnection {
 
     public void delete(personel c) {
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "delete from personel where id" + c.getPersonel_id();
             st.executeUpdate(query);
 
@@ -55,7 +55,7 @@ public class personelDAO extends DBConnection {
         List<personel> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from personel";
 
             ResultSet rs = st.executeQuery(query);

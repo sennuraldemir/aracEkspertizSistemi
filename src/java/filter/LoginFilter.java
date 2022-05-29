@@ -20,7 +20,7 @@ import java.io.IOException;
 
 /**
  *
- * @author gurkangltekin
+ * @author sennur
  */
 @WebFilter("/*") //Bütün url yi dinle
 public class LoginFilter implements Filter {

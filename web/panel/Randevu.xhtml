@@ -1,79 +1,81 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
-      
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <head>
         <title>Randevu</title>
-        <h:outputStylesheet library="css" name="bootstrap.min.css" />
     </head>
-      
+
     <body>
         <h:form>
             <h:commandButton action="/index" value="/home"/>
         </h:form>
 
         <hr/>
-          
-        <h:form>
-            randevu_id: <h:inputText value="#{RandevuBean.entity.randevu_id}"/><br/>
-            saseno_id: <h:inputText value="#{RandevuBean.entity.saseno_id}"/><br/>
-            tarih : <h:inputText value="#{RandevuBean.entity.tarih}"/><br/>
-            saat : <h:inputText value="#{RandevuBean.entity.saat}"/><br/>
-            adi : <h:inputText value="#{RandevuBean.entity.adi}"/><br/>
-            soyadi : <h:inputText value="#{RandevuBean.entity.soyadi}"/><br/>
 
-            <h:commandButton rendered="#{RandevuBean.entity.randevu_id==null}" action="#{RandevuBean.create()}" value="create"/>
-            <h:commandButton rendered="#{RandevuBean.entity.randevu_id!=null}" action="#{RandevuBean.update()}" value="Update"/>
+        <h:form>
+
+            plaka_id:
+            <h:selectOneMenu value="#{randevuBean.entity.plaka_id}">
+                <f:selectItems value="#{randevuBean.acikRaporlarList}" var="c" itemValue="#{c.plaka_id}" itemLabel="#{c.plaka_id}"/>
+            </h:selectOneMenu>
+            <br/>
+
+
+            tarih : <h:inputText value="#{randevuBean.entity.tarih}"/><br/>
+            saat : <h:inputText value="#{randevuBean.entity.saat}"/><br/>
+            adi : <h:inputText value="#{randevuBean.entity.ad}"/><br/>
+            soyadi : <h:inputText value="#{randevuBean.entity.soyad}"/><br/>
+            
+            
+            <h:commandButton rendered="#{randevuBean.entity.randevu_id==null}" action="#{randevuBean.create()}" value="create"/>
+            <h:commandButton rendered="#{randevuBean.entity.randevu_id!=null}" action="#{randevuBean.update()}" value="Update"/>
 
         </h:form>
-          
+
         <hr/>
 
         <h:form>
             <h:column>
-                <f:facet name="header">randevu_id</f:facet>  
-                    #{entity.randevu_id}
+                <f:facet name="header">plaka_id</f:facet>  
+                    #{entity.plaka_id}
             </h:column>
-              
-            <h:dataTable value="#{RandevuBean.list}" var="entity">
+
+            <h:dataTable value="#{randevuBean.list}" var="entity">
+                
+
                 <h:column>
-                    <f:facet name="header">randevu_id</f:facet>  
-                        #{entity.randevu_id}
+                    <f:facet name="header">plaka_id</f:facet>  
+                        #{entity.plaka_id}
                 </h:column>
-                  
-                <h:column>
-                    <f:facet name="header">saseno_id</f:facet>  
-                        #{entity.saseno_id}
-                </h:column>
-                  
+
                 <h:column>
                     <f:facet name="header">tarih</f:facet>  
                         #{entity.tarih}
                 </h:column>
-                  
+
                 <h:column>
                     <f:facet name="header">saat</f:facet>  
                         #{entity.saat}
                 </h:column>
-                  
+
                 <h:column>
-                    <f:facet name="header">adi</f:facet>  
-                        #{entity.adi}
+                    <f:facet name="header">ad</f:facet>  
+                        #{entity.ad}
                 </h:column>
-                  
+
                 <h:column>
-                    <f:facet name="header">soyadi</f:facet>  
-                        #{entity.soyadi}
+                    <f:facet name="header">soyad</f:facet>  
+                        #{entity.soyad}
                 </h:column>
-                  
+
                 <h:column>
-                    <h:commandButton  action="#{RandevuBean.delete(entity)}" value="delete"/>
-                    <h:commandButton action="#{RandevuBean.setEntity(entity)}" value="update"/>
+                    <h:commandButton  action="#{randevuBean.delete(entity)}" value="delete"/>
+                    <h:commandButton action="#{randevuBean.setEntity(entity)}" value="update"/>
                 </h:column> 
             </h:dataTable>
         </h:form>
     </body>
 </html>
-

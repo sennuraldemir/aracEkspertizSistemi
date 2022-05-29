@@ -4,71 +4,60 @@
  */
 package entity;
 
+import java.util.Date;
+
 /**
  *
- * @author sennur
+ * @author Mustafa
  */
 public class Denetim {
-
-    private int denetim_id;
-    private int firmasicil_no;
-    private int denetim_tarihi;
-    private String denetim_bulgu;
-    private int puan_sonucu;
-
-    public Denetim(int denetim_id, int firmasicil_no, int denetim_tarihi, String denetim_bulgu, int puan_sonucu) {
-        this.denetim_id = denetim_id;
-        this.firmasicil_no = firmasicil_no;
-        this.denetim_tarihi = denetim_tarihi;
-        this.denetim_bulgu = denetim_bulgu;
-        this.puan_sonucu = puan_sonucu;
-    }
+    private Long id;
+    private String title;
+    private Date created;
+    private Date updated;
 
     public Denetim() {
     }
 
-    public int getDenetim_id() {
-        return denetim_id;
+    public Denetim(Long id, String title, Date created, Date updated) {
+        this.id = id;
+        this.title = title;
+        this.created = created;
+        this.updated = updated;
     }
 
-    public void setDenetim_id(int denetim_id) {
-        this.denetim_id = denetim_id;
+    public Long getId() {
+        return id;
     }
 
-    public int getFirmasicil_no() {
-        return firmasicil_no;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setFirmasicil_no(int firmasicil_no) {
-        this.firmasicil_no = firmasicil_no;
+    public String getTitle() {
+        return title;
     }
 
-    public int getDenetim_tarihi() {
-        return denetim_tarihi;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setDenetim_tarihi(int denetim_tarihi) {
-        this.denetim_tarihi = denetim_tarihi;
+    public Date getCreated() {
+        return created;
     }
 
-    public String getDenetim_bulgu() {
-        return denetim_bulgu;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public void setDenetim_bulgu(String denetim_bulgu) {
-        this.denetim_bulgu = denetim_bulgu;
+    public Date getUpdated() {
+        return updated;
     }
 
-    public int getPuan_sonucu() {
-        return puan_sonucu;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
-
-    public void setPuan_sonucu(int puan_sonucu) {
-        this.puan_sonucu = puan_sonucu;
-    }
-
     
     
- 
 
 }

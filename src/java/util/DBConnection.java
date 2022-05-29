@@ -11,18 +11,24 @@ import java.sql.DriverManager;
  *
  * @author Mustafa
  */
-public class DBConnection {
+public abstract class DBConnection {
 
-    public Connection connect() {
-        Connection c=null;
+    private Connection connection;
+    
+    public Connection getConnection(){
+        if(this.connection==null){
         
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/aracEkspertizSistemi", "postgres", "12345");
+            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/aracEkspertizSistemi", "postgres", "12345");
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return c;
+        }
+        return connection;
+        
     }
+    
+    
 }

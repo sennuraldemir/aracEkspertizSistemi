@@ -1,8 +1,7 @@
-
 package dao;
 
 import entity.randevu;
-import java.sql.Connection;
+import util.DBConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,12 +10,12 @@ import java.util.List;
 
 public class randevuDAO extends DBConnection{
     
-    private Connection db;
+   
 
     public void create(randevu c) {
         
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
 
             String query = "insert into randevu (plaka_id, tarih,saat, ad,soyad) values ('" + c.getPlaka_id() + "','" + c.getTarih() + "','" + c.getSaat() + "','" + c.getAd() + "','"+ c.getSoyad() + "')";
             st.executeUpdate(query);
@@ -29,8 +28,8 @@ public class randevuDAO extends DBConnection{
 
     public void update(randevu c) {
         try {
-            Statement st = this.connect().createStatement();
-            String query="update randevu set sase_no='"+c.getPlaka_id()+"'where id="+c.getRandevu_id();
+             Statement st = this.getConnection().createStatement();
+            String query="update randevu set plaka_id='"+c.getPlaka_id()+"'where id="+c.getRandevu_id();
             
             st.executeUpdate(query);
             
@@ -41,7 +40,7 @@ public class randevuDAO extends DBConnection{
 
     public void delete(randevu c) {
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
 
             String query = "delete from category where id" + c.getRandevu_id();
             st.executeUpdate(query);
@@ -56,7 +55,7 @@ public class randevuDAO extends DBConnection{
         List<randevu> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query ="select * from randevu";
         
 
@@ -75,19 +74,5 @@ public class randevuDAO extends DBConnection{
         return list;
     }
 
-    public Connection getDb() {
-        if (this.db == null) {
-
-            this.db = this.connect();
-        }
-        return db;
-    }
-
-    public void setDb(Connection db) {
-        this.db = db;
-    }
 
 }
-
-    
-

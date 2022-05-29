@@ -5,25 +5,23 @@
     <h:head>
         <title>AracEkspertizSistemi</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
+
     </h:head>
+
     <h:body>
+        <h:form>
+            <br/>
+            <br/>
+            <br/>
 
-        <div class="container mt-5">
-            <h:form> 
-                <h:commandButton styleClass="btn btn-danger" action="/login?faces.redirect=true" value="Login"/>
-                <h:commandButton styleClass="btn btn-dark" action="/logout?faces.redirect=true" value="Logout"/>
-                <h:commandButton styleClass="btn btn-primary" action="/panel/Arac.xhtml" value="Arac"/>
-                <h:commandButton styleClass="btn btn-info"    action="/panel/AcikRaporlar.xhtml" value="AcikRaporlar"/>
-                <h:commandButton styleClass="btn btn-danger" action="/panel/sorgular.xhtml" value="sorgular"/>
-                <h:commandButton styleClass="btn btn-warning" action="/panel/Odeme.xhtml" value="Odeme"/>
-                <h:commandButton styleClass="btn btn-secondary" action="/panel/Randevu.xhtml" value="Randevu"/>
-                <h:commandButton styleClass="btn btn-primary" action="/panel/muhasebe.xhtml" value="muhasebe"/>
-                <h:commandButton styleClass="btn btn-success" action="/panel/personel.xhtml" value="personel"/> 
-                <h:commandButton styleClass="btn btn-danger" action="/panel/denetim.xhtml" value="denetim"/> 
-                <h:commandButton styleClass="btn btn-dark" action="/panel/memnuniyetRaporu.xhtml" value="memnuniyetRaporu"/> 
+            <font size="6" color="white" face="Roboto"> Arac Ekspertiz Sitesine Hoşgeldiniz... </font>
+            <body background="images/arac.jpg"/> <br/>
+            Email : <h:inputText styleClass="btn btn-danger" value="#{sessionBean.email}"/><br/>
+            Password : <h:inputText styleClass="btn btn-dark" value="#{sessionBean.pass}"/><br/>
+            <h:commandButton action="#{sessionBean.login}" value="Login"/>
 
-            </h:form>                                      
-        </div>
+        </h:form>
+        <h:messages/> 
+
     </h:body>
 </html>
-

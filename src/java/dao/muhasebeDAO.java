@@ -1,19 +1,19 @@
 package dao;
 
 import entity.muhasebe;
-import java.sql.Connection;
+import util.DBConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class muhasebeDAO extends DBConnection {
-    private Connection db;
+  
     
     public void create(muhasebe c){
         
         try{
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "insert into muhasebe (personel_id, firma_adi, odeme_bilgileri, gider_tipleri) values ('" + c.getPersonel_id() + "' , '" + c.getFirma_adi() + "' , '" + c.getOdeme_bilgileri() + "' , '" + c.getGider_tipleri() + "')";
             st.executeUpdate(query);
             
@@ -27,7 +27,7 @@ public class muhasebeDAO extends DBConnection {
     public void update(muhasebe c){
         
         try{
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "update muhasebe set personel_id='" + c.getPersonel_id() + "' where id= "+c.getFirmasicilno_id();
             st.executeUpdate(query);
             
@@ -41,7 +41,7 @@ public class muhasebeDAO extends DBConnection {
     public void delete(muhasebe c){
         
         try{
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "delete from muhasebe where id" + c.getFirmasicilno_id();
             st.executeUpdate(query);
             
@@ -55,7 +55,7 @@ public class muhasebeDAO extends DBConnection {
         List<muhasebe> list = new ArrayList<>();
         
         try{
-            Statement st = this.connect().createStatement();
+             Statement st = this.getConnection().createStatement();
             String query = "select * from muhasebe";
             ResultSet rs = st.executeQuery(query);
             
@@ -71,19 +71,5 @@ public class muhasebeDAO extends DBConnection {
         return list;
         
     }
-    
-    public Connection getDb() {
-        if (this.db == null){
-            this.db = this.connect();
-            
-        }
-        return db;
-    }
-    
-    public void setDb(Connection db){
-        this.db = db;
-        
-    }
-    
     
 }
