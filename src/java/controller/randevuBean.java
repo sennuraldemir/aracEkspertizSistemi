@@ -5,10 +5,8 @@
 package controller;
 
 import dao.AcikRaporlarDAO;
-import dao.AracDAO;
 import dao.randevuDAO;
 import entity.AcikRaporlar;
-import entity.Arac;
 import entity.randevu;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
@@ -29,20 +27,17 @@ public class randevuBean implements Serializable {
     private AcikRaporlarDAO acikRaporlarDao;
     private List<AcikRaporlar> acikRaporlarList;
 
-    /*
-    private odeme entity;
-    private odemeDAO dao;
-    private AracDAO aracDao;
-    private List<odeme> list;
-    private List<Arac> aracList;
-
-     */
+    
     /**
      * Creates a new instance of randevuBean
      */
     public randevuBean() {
     }
 
+    
+    public void clearForm() {
+        this.entity = new randevu();
+    }
     public void create() {
         this.getDao().create(entity);
         entity = new randevu();
@@ -53,8 +48,8 @@ public class randevuBean implements Serializable {
         entity = new randevu();
     }
 
-    public void delete(randevu r) {
-        this.getDao().delete(r);
+    public void delete() {
+        this.getDao().delete(entity);
         entity = new randevu();
     }
 
