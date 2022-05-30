@@ -4,53 +4,54 @@
  */
 package entity;
 
+
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  *
  * @author Mustafa
  */
-public class randevu {
+public class randevu implements Serializable{
 
-    private String randevu_id;
+    private int randevu_id;
     private String plaka_id;
-    private String tarih;
-    private String saat;
-    private String ad;
-    private String soyad;
+    private Date tarih;
+    private String adi;
+    private String soyadi;
 
-    public randevu(String randevu_id, String plaka_id, String tarih, String saat, String ad, String soyad) {
+    public randevu(int randevu_id, String plaka_id, Date tarih, String adi, String soyadi) {
         this.randevu_id = randevu_id;
         this.plaka_id = plaka_id;
         this.tarih = tarih;
-        this.saat = saat;
-        this.ad = ad;
-        this.soyad = soyad;
-    }
-    
-    
-     public randevu() {
+        this.adi = adi;
+        this.soyadi = soyadi;
     }
 
-    public String getAd() {
-        return ad;
+    public randevu() {
     }
 
-    public void setAd(String ad) {
-        this.ad = ad;
+    public String getAdi() {
+        return adi;
     }
 
-    public String getSoyad() {
-        return soyad;
+    public void setAdi(String adi) {
+        this.adi = adi;
     }
 
-    public void setSoyad(String soyad) {
-        this.soyad = soyad;
+    public String getSoyadi() {
+        return soyadi;
     }
 
-    public String getRandevu_id() {
+    public void setSoyadi(String soyadi) {
+        this.soyadi = soyadi;
+    }
+
+    public int getRandevu_id() {
         return randevu_id;
     }
 
-    public void setRandevu_id(String randevu_id) {
+    public void setRandevu_id(int randevu_id) {
         this.randevu_id = randevu_id;
     }
 
@@ -62,25 +63,13 @@ public class randevu {
         this.plaka_id = plaka_id;
     }
 
-    public String getTarih() {
+    public Date getTarih() {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
+    public void setTarih(Date tarih) {
         this.tarih = tarih;
     }
 
-    public String getSaat() {
-        return saat;
-    }
-
-    public void setSaat(String saat) {
-        this.saat = saat;
-    }
-
-    /**
-     * Creates a new instance of randevuController
-     */
-   
-
+    
 }
