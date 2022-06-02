@@ -1,4 +1,3 @@
-
 package controller;
 
 import dao.personelDAO;
@@ -12,7 +11,6 @@ import java.util.List;
  *
  * @author ZEHRA
  */
-
 @Named(value = "personelBean")
 @SessionScoped
 
@@ -21,29 +19,32 @@ public class personelBean implements Serializable {
     private personel entity;
     private personelDAO dao;
     private List<personel> list;
-    
+
+    private int page = 1;
+    private int pageCount = 0;
+
     public personelBean() {
     }
 
-    public void create(){
+    public void clearForm() {
+        this.entity = new personel();
+    }
+
+    public void create() {
         this.getDao().create(entity);
-        entity=new personel();
+        entity = new personel();
     }
-    
-    public void update(){
+
+    public void update() {
         this.getDao().update(entity);
-        entity=new personel();
+        entity = new personel();
     }
-    
-    public void delete(personel a){
-        this.getDao().delete(a);
-        entity=new personel();
+
+    public void delete() {
+        this.getDao().delete(entity);
+        entity = new personel();
     }
-    
-    public void clear(){
-        entity=new personel();
-    }
-    
+
     public personel getEntity() {
         if (entity == null) {
             entity = new personel();
@@ -66,8 +67,22 @@ public class personelBean implements Serializable {
         this.dao = dao;
     }
 
+    public void previous() {
+        page--;
+        if (page < 1) {
+            page = this.getPageCount();
+        }
+    }
+
+    public void next() {
+        page++;
+        if (page > this.getPageCount()) {
+            page = 1;
+        }
+    }
+
     public List<personel> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().readList(page);
         return list;
     }
 
@@ -75,5 +90,23 @@ public class personelBean implements Serializable {
         this.list = list;
     }
 
-}
+    public int getPage() {
+        return page;
+    }
 
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageCount() {
+        List<personel> glist = this.getDao().readList();
+        int size = glist.size();
+        pageCount = (int) Math.ceil(size / 5);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+}
