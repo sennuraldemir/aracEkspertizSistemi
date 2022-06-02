@@ -34,8 +34,7 @@ public class DenetimDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select*from denetim id limit 5 offset " + offset);
-            
+             ResultSet rs = st.executeQuery("select*from denetim id limit 5 offset " + offset);
             while (rs.next()) {
                 list.add(new Denetim(rs.getLong("id"), rs.getString("title"), rs.getDate("created"), rs.getDate("updated")));
 
