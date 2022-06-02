@@ -1,78 +1,108 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
-    <head>
-        <title>personel</title>
-        <h:outputStylesheet library="css" name="bootstrap.min.css" />
-    </head>
-    
-    <body>
-        
-        <h:form>
-            <h:commandButton action="/index" value="/home"/>
-        </h:form>
-        
-        <hr/>
-        
-        <h:form>
- 
-            personel_id : <h:inputText value="#{personelBean.entity.personel_id}"/><br/>
-            adi : <h:inputText value="#{personelBean.entity.adi}"/><br/>
-            soyadi : <h:inputText value="#{personelBean.entity.soyadi}"/><br/>
-            yas : <h:inputText value="#{personelBean.entity.yas}"/><br/>
-            meslegi : <h:inputText value="#{personelBean.entity.meslegi}"/><br/>
-            
-            <h:commandButton rendered="#{personelBean.entity.personel_id==null}" action="#{personelBean.create()}" value="create"/>
-            <h:commandButton rendered="#{personelBean.entity.personel_id!=null}" action="#{personelBean.update()}" value="Update"/>
-                                                                                                                               
-        </h:form>
-        
-        <hr/>
-        
-        <h:form>
-            
-            <h:column>
-                <f:facet name="header">personel_id</f:facet>
-                    #{entity.personel_id}
-            </h:column>
-            
-            <h:dataTable value="#{personelBean.list}" var="entity">
-                <h:column>
-                    <f:facet name="header">personel_id</f:facet>
-                        #{entity.personel_id}
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">adi</f:facet>
-                        #{entity.adi}
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">soyadi</f:facet>
-                        #{entity.soyadi}
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">yas</f:facet>
-                        #{entity.yas}
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">meslegi</f:facet>
-                        #{entity.meslegi}
-                </h:column>
-                
-                <h:column>
-                    <h:commandButton action="#{personelBean.delete(entity)}" value="delete"/>
-                    <h:commandButton action="#{personelBean.setEntity(entity)}" value="Update"/>
-                    
-                </h:column>
-                
-            </h:dataTable>
-        </h:form>
-    </body>
-</html>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <title>Personel</title>
+    </h:head>
+
+    <h:body>
+        <div class ="container">
+            <div class="row">
+                <h:form styleClass="my-3"> 
+                    <h:commandButton styleClass="btn" action="/panel/Arac.xhtml" value="Arac"/>
+                    <h:commandButton styleClass="btn" action="/panel/AcikRaporlar.xhtml" value="Açık Raporlar"/>
+                    <h:commandButton styleClass="btn" action="/panel/sorgular.xhtml" value="Sorgular"/>
+                    <h:commandButton styleClass="btn" action="/panel/Odeme.xhtml" value="Odeme"/>
+                    <h:commandButton styleClass="btn" action="/panel/Randevu.xhtml" value="Randevu"/>
+                    <h:commandButton styleClass="btn" action="/panel/muhasebe.xhtml" value="Muhasebe"/>
+                    <h:commandButton styleClass="btn" action="/panel/personel.xhtml" value="Personel"/> 
+                    <h:commandButton styleClass="btn" action="/panel/denetim.xhtml" value="Denetim"/> 
+                    <h:commandButton styleClass="btn" action="/panel/memnuniyetRaporu.xhtml" value="Memnuniyet Raporu"/> 
+                    <h:commandButton styleClass="btn" action="/panel/group.xhtml" value="Group"/>
+                    <h:commandButton styleClass="btn" action="/panel/user.xhtml" value="User"/>
+                    <h:commandButton styleClass="btn" action="/panel/privilege.xhtml" value="Privilege"/>
+                </h:form> 
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h:form>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        AD
+                                    </th>
+                                    <th>
+                                        SOYAD
+                                    </th>
+                                    <th>
+                                        YAS
+                                    </th>
+                                    <th>
+                                        MESLEK
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{personelBean.list}" var="e">
+                                    <tr>
+                                        <td>
+                                            <h:commandLink action="#{personelBean.setEntity(e)}" value="#{e.personel_id}"/>
+                                        </td>
+                                        <td>#{e.adi}</td>
+                                        <td>#{e.soyadi}</td>
+                                        <td>#{e.yas}</td>
+                                        <td>#{e.meslegi}</td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+<tfoot>
+                           
+                                <h3>Page: #{personelBean.page}/#{personelBean.pageCount}</h3>
+                                <h:commandButton styleClass="btn btn-sm btn-success" action="#{personelBean.previous()}" value="previous"/>
+                                <h:commandButton styleClass="btn btn-sm btn-success" action="#{personelBean.next()}" value="next"/>
+                            
+                        </tfoot>
+
+                        </table>
+                    </h:form>
+                </div>   
+                <div class="col">
+                    <h:form>
+                        <div class="mb-3">
+                            <label>ID</label>
+                            <h:inputText value="#{personelBean.entity.personel_id}" styleClass="form-control"/>
+                            <label>AD</label>
+                            <h:inputText value="#{personelBean.entity.adi}" styleClass="form-control"/>
+                            <label>SOYAD</label>
+                            <h:inputText value="#{personelBean.entity.soyadi}" styleClass="form-control"/>
+                            <label>YAS</label>
+                            <h:inputText value="#{personelBean.entity.yas}" styleClass="form-control"/>
+                            <label>MESLEK</label>
+                            <h:inputText value="#{personelBean.entity.meslegi}" styleClass="form-control"/>
+                        </div>
+                        <div class="mb-3">
+                            <h:commandButton styleClass="btn btn-success" rendered="#{personelBean.entity.personel_id==0}" action="#{personelBean.create}" value="Create"/>
+                            <h:commandButton styleClass="btn btn-primary" rendered="#{personelBean.entity.personel_id!=null}" action="#{personelBean.update}" value="Update"/>
+                            <h:commandButton styleClass="btn btn-danger" rendered="#{personelBean.entity.personel_id!=null}" action="#{personelBean.delete}" value="Delete"/>
+                            <h:commandButton styleClass="btn btn-outline-secondary" rendered="#{personelBean.entity.personel_id!=null}" action="#{personelBean.clearForm}" value="ClearForm"/>
+
+                        </div>
+                    </h:form>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </h:body>
+</html>
