@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author Mustafa
+ * @author sennur
  */
 @Named(value = "memnuniyetRaporuBean")
 @SessionScoped
@@ -23,10 +23,11 @@ public class MemnuniyetRaporuBean implements Serializable {
     private MemnuniyetRaporuDAO dao;
     private List<MemnuniyetRaporu> list;
 
-    /**
-     * Creates a new instance of odemeBean
-     */
-    public MemnuniyetRaporuBean() {
+    private int page = 1;
+    private int pageCount = 0;
+
+    public void clearForm() {
+        this.entity = new MemnuniyetRaporu();
     }
 
     public void create() {
@@ -39,18 +40,14 @@ public class MemnuniyetRaporuBean implements Serializable {
         entity = new MemnuniyetRaporu();
     }
 
-    public void delete(MemnuniyetRaporu a) {
-        this.getDao().delete(a);
-        entity = new MemnuniyetRaporu();
-    }
-
-    public void clear() {
+    public void delete() {
+        this.getDao().delete(entity);
         entity = new MemnuniyetRaporu();
     }
 
     public MemnuniyetRaporu getEntity() {
-        if (entity == null) {
-            entity = new MemnuniyetRaporu();
+        if (this.entity == null) {
+            this.entity = new MemnuniyetRaporu();
         }
         return entity;
     }
@@ -60,8 +57,8 @@ public class MemnuniyetRaporuBean implements Serializable {
     }
 
     public MemnuniyetRaporuDAO getDao() {
-        if (dao == null) {
-            dao = new MemnuniyetRaporuDAO();
+        if (this.dao == null) {
+            this.dao = new MemnuniyetRaporuDAO();
         }
         return dao;
     }
@@ -70,13 +67,46 @@ public class MemnuniyetRaporuBean implements Serializable {
         this.dao = dao;
     }
 
+    public void previous() {
+        page--;
+        if (page < 1) {
+            page = this.getPageCount();
+        }
+    }
+
+    public void next() {
+        page++;
+        if (page > this.getPageCount()) {
+            page = 1;
+        }
+    }
+
     public List<MemnuniyetRaporu> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().readList(page);
         return list;
     }
 
     public void setList(List<MemnuniyetRaporu> list) {
         this.list = list;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageCount() {
+        List<MemnuniyetRaporu> glist = this.getDao().readList();
+        int size = glist.size();
+        pageCount = (int) Math.ceil(size / 5);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
     }
 
 }
