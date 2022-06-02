@@ -29,6 +29,8 @@ public class TestBean implements Serializable {
             throw new ValidatorException(new FacesMessage("Şifre alanı boş bırakılamaz!"));
         } else if (v.length() < 8) {
             throw new ValidatorException(new FacesMessage("Şifre alanı 8 karakterden kısa olamaz!"));
+        }else if (v.length() > 15) {
+            throw new ValidatorException(new FacesMessage("Şifre alanı 15 karakterden uzun olamaz!"));
         }
 
         return true;
